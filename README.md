@@ -1,6 +1,6 @@
 # Redux Atomic Example
 
-An example app for use of [https://github.com/danieljharvey/redux-atomic](Redux Atomic), a library for saving on Redux boilerplate.
+An example app for use of [Redux Atomic](https://github.com/danieljharvey/redux-atomic), a library for saving on Redux boilerplate.
 
 ## Available Scripts
 
