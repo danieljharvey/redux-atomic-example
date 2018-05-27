@@ -1,0 +1,28 @@
+{
+  "extends": ["tslint-config-prettier"],
+  "linterOptions": {
+    "disable": "jsx-no-lambda",
+    "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
+  },
+  "rules": {
+    "no-console": false,
+    "max-line-length": false,
+    "no-var-requires": false,
+    "quotemark": ["jsx-single"],
+    "callable-types": false,
+    "member-ordering": [false],
+    "object-literal-sort-keys": false,
+    "class-name": false,
+    "max-classes-per-file": [2],
+    "ordered-imports": [false],
+    "semicolon": [false, "never"],
+    "variable-name": [false],
+    "interface-name": [false],
+    "object-literal-key-quotes": [false],
+    "member-access": false,
+    "trailing-comma": [false],
+    "no-dirty-imports": true,
+    "messages-file-format": true,
+    "arrow-parens": false
+  }
+}
