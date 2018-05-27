@@ -5784,9 +5784,9 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-atomic@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.1.0.tgz#6e78810b6b3b8ba6f7e9b8945fb23af8cf4314bc"
+redux-atomic@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.1.1.tgz#a8dff3b50253337e494f1ade8a722a91f9c04521"
 
 redux@^4.0.0:
   version "4.0.0"

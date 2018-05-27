@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect, Dispatch } from "react-redux";
-import { actions, User } from "./userAdvancedReducer";
-
+import { actions } from "./userAdvancedReducer";
+import { User } from "./userAdvancedTypes";
 import { IStoreState } from "../Store";
 
 interface IUserFormStateProps {

@@ -1,6 +1,8 @@
 import { combineReducers, createStore } from "redux";
-import { userAdvancedReducer, UserState } from "./user-advanced/userAdvancedReducer";
-import { IUserState, userReducer } from "./user/userReducer";
+import { userAdvancedReducer } from "./user-advanced/userAdvancedReducer";
+import { UserState } from "./user-advanced/userAdvancedTypes";
+import { userReducer } from "./user/userReducer";
+import { IUserState } from "./user/userTypes";
 
 export interface IStoreState {
   user: IUserState;

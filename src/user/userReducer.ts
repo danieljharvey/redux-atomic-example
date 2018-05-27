@@ -1,18 +1,10 @@
 import { createAtomic } from "redux-atomic";
+import { IUser, IUserState } from "./userTypes";
 
-export interface IUserState {
-  users: IUser[];
-  nextUserID: number;
-  editUser: IUser;
-}
+// this is an entire Redux Atomic reducer
+// actions and reducer and combined together
 
-export interface IUser {
-  userID: number;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: Date | null;
-}
-
+// setting initialState
 const defaultUser: IUser = {
   dateOfBirth: null,
   firstName: "",
@@ -26,6 +18,7 @@ const initialState: IUserState = {
   users: []
 };
 
+// Reducer action functions that we will be using
 const setFirstName = (firstName: string) => (state: IUserState): IUserState => ({
   ...state,
   editUser: {
@@ -42,16 +35,25 @@ const setLastName = (lastName: string) => (state: IUserState): IUserState => ({
   }
 });
 
-const addUser = () => (state: IUserState): IUserState => {
-  const user = {
-    ...state.editUser,
-    userID: state.nextUserID
-  };
-  return clearForm({
+const addUser = () => (state: IUserState): IUserState =>
+  clearForm({
     ...state,
-    users: state.users.concat([user])
+    users: state.users.concat([
+      {
+        ...state.editUser,
+        userID: state.nextUserID
+      }
+    ])
   });
-};
+
+const removeUser = (userID: number) => (state: IUserState): IUserState => ({
+  ...state,
+  users: state.users.filter(user => user.userID !== userID)
+});
+
+// this is not an action, rather a helper function used by addUser
+// breaking stuff down allows us to name the separate things happening
+// and use good naming to explain what is happening
 
 const clearForm = (state: IUserState): IUserState => ({
   ...state,
@@ -59,10 +61,10 @@ const clearForm = (state: IUserState): IUserState => ({
   nextUserID: state.nextUserID + 1
 });
 
-const removeUser = (userID: number) => (state: IUserState): IUserState => ({
-  ...state,
-  users: state.users.filter(user => user.userID !== userID)
-});
+// this creates the reducer, it takes:
+// - a name (must be unique
+// - the initial state
+// - an array of reducer action functions (from above)
 
 const { reducer, wrap } = createAtomic("User", initialState, [
   addUser,
@@ -71,7 +73,13 @@ const { reducer, wrap } = createAtomic("User", initialState, [
   setLastName
 ]);
 
+// it returns two things:
+// - the reducer for exporting and combining etc
+// - a wrap function for creating actions from your reducer actions
+
 export const userReducer = reducer;
+
+// these actions can now be dispatched as normal
 export const actions = {
   onAddUser: wrap(addUser),
   onRemoveUser: wrap(removeUser),

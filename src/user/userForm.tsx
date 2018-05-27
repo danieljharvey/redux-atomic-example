@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect, Dispatch } from "react-redux";
-import { actions, IUser } from "./userReducer";
-
+import { actions } from "./userReducer";
+import { IUser } from "./userTypes";
 import { IStoreState } from "../Store";
 
 interface IUserFormStateProps {
