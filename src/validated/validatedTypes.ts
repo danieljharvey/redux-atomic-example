@@ -13,7 +13,8 @@ export const PersonStateValidator = t.type({
   editPerson: PersonValidator,
   nextPersonID: t.number,
   people: t.array(PersonValidator),
-  warning: t.string
+  warning: t.string,
+  firstUserCount: t.number
 });
 
 // types generated from validators

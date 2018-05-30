@@ -19,14 +19,15 @@ const removeUser = (props: IUserListProps, userID: number) => () => props.onRemo
 const ValidatedList = (props: IUserListProps) => {
   return (
     <div>
-      {props.people.map(person => (
-        <div>
+      {props.people.map((person, index) => (
+        <div key={index}>
           <h3>{person.firstName + " " + person.lastName}</h3>
           <h4>{"Age " + person.age.toString()}</h4>
           <button onClick={removeUser(props, person.personID)}>delete</button>
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   );
 };
 

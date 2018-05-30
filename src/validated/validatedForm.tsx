@@ -7,6 +7,7 @@ import { IStoreState } from "../Store";
 interface IUserFormStateProps {
   editPerson: Person;
   warning: string;
+  firstUserCount: number
 }
 
 interface IUserFormDispatchProps {
@@ -31,6 +32,7 @@ const ValidatedForm = (props: IUserFormProps) => {
   return (
     <div>
       {props.warning && <h1 style={{ color: "red" }}>{props.warning}</h1>}
+      <p>Reducer one has {props.firstUserCount.toString()} members</p>
       <label>First name</label>
       <input
         type="text"
@@ -66,7 +68,8 @@ const mapDispatchToProps: IUserFormDispatchProps = {
 
 const mapStateToProps = (state: IStoreState): IUserFormStateProps => ({
   editPerson: state.validated.editPerson,
-  warning: state.validated.warning
+  warning: state.validated.warning,
+  firstUserCount: state.validated.firstUserCount
 });
 
 export const ValidatedFormContainer = connect<IUserFormStateProps, IUserFormDispatchProps>(

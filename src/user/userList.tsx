@@ -18,12 +18,13 @@ const removeUser = (props: IUserListProps, userID: number) => () => props.onRemo
 const UserList = (props: IUserListProps) => {
   return (
     <div>
-      {props.users.map(user => (
-        <div>
+      {props.users.map((user: IUser, index: number) => (
+        <div key={index}>
           <h3>{user.firstName + " " + user.lastName}</h3>
           <button onClick={removeUser(props, user.userID)}>delete</button>
         </div>
-      ))}
+      ))
+      }
     </div>
   );
 };

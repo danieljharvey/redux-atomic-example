@@ -1,4 +1,6 @@
-import { combineReducers, createStore } from "redux";
+import { createStore } from "redux";
+
+import { combineReducers, install } from 'redux-loop';
 
 import { userAdvancedReducer } from "./user-advanced/userAdvancedReducer";
 import { UserState } from "./user-advanced/userAdvancedTypes";
@@ -15,10 +17,11 @@ export interface IStoreState {
   validated: PersonState;
 }
 
-const rootReducer = combineReducers({
+const rootReducer: any = combineReducers({
   user: userReducer,
   advancedUser: userAdvancedReducer,
   validated: validatedReducer
 });
 
-export const store: any = createStore(rootReducer);
+export const store: any = createStore(rootReducer, install());
+

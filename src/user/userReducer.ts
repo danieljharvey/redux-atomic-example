@@ -12,7 +12,7 @@ const defaultUser: IUser = {
   userID: 0
 };
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
   editUser: defaultUser,
   nextUserID: 1,
   users: []
