@@ -7,7 +7,7 @@ import { IStoreState } from "../Store";
 interface IUserFormStateProps {
   editPerson: Person;
   warning: string;
-  firstUserCount: number
+  firstUserCount: number;
 }
 
 interface IUserFormDispatchProps {
@@ -32,7 +32,7 @@ const ValidatedForm = (props: IUserFormProps) => {
   return (
     <div>
       {props.warning && <h1 style={{ color: "red" }}>{props.warning}</h1>}
-      <p>Reducer one has {props.firstUserCount.toString()} members</p>
+      <p>Reducer 1 + 3 have a total of {props.firstUserCount.toString()} members</p>
       <label>First name</label>
       <input
         type="text"

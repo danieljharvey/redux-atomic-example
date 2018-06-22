@@ -24,14 +24,14 @@ class App extends React.Component {
             <UserFormContainer />
             <UserListContainer />
           </div>
-          <header className="App-header">
+          <header className="App-header red">
             <h1 className="App-title">Welcome to the advanced Redux Atomic Example</h1>
           </header>
           <div style={{ padding: "20px" }}>
             <UserAdvancedFormContainer />
             <UserAdvancedListContainer />
           </div>
-          <header className="App-header">
+          <header className="App-header blue">
             <h1 className="App-title">Welcome to the very silly Redux Atomic Example</h1>
           </header>
           <div style={{ padding: "20px" }}>
