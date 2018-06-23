@@ -12,7 +12,7 @@
     "react-redux": "^5.0.7",
     "react-scripts-ts": "2.16.0",
     "redux": "^4.0.0",
-    "redux-atomic": "^0.1.5",
+    "redux-atomic": "^0.1.6",
     "redux-loop": "^4.3.3"
   },
   "scripts": {
