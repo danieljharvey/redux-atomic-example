@@ -1,6 +1,7 @@
 import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import { combineReducers, install } from 'redux-loop';
+import { combineReducers, install } from "redux-loop";
 
 import { userAdvancedReducer } from "./user-advanced/userAdvancedReducer";
 import { UserState } from "./user-advanced/userAdvancedTypes";
@@ -23,5 +24,4 @@ const rootReducer: any = combineReducers({
   validated: validatedReducer
 });
 
-export const store: any = createStore(rootReducer, install());
-
+export const store: any = createStore(rootReducer, composeWithDevTools(install()));

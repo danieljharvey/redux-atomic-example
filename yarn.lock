@@ -5774,9 +5774,13 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-atomic@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.1.6.tgz#3a6d4f5f135940a4ea3ec0c95ac672678b87df48"
+redux-atomic@0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.1.8.tgz#b88b1b93aba095c3bc622418761e142f83e64cd6"
+
+redux-devtools-extension@^2.13.5:
+  version "2.13.5"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.5.tgz#3ff34f7227acfeef3964194f5f7fc2765e5c5a39"
 
 redux-loop@^4.3.3:
   version "4.3.3"
