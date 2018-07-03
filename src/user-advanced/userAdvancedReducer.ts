@@ -96,22 +96,18 @@ const removeUser = (userID: number) => (state: UserState): UserState =>
 
 // the reducer itself, with the functions passed in
 
-const { reducer, wrap } = createAtomic("UserAdvanced", advancedInitialState, [
-  addUser,
-  removeUser,
-  setAge,
-  setFirstName,
-  setLastName
-]);
+const { actionTypes, reducer, wrap } = createAtomic("UserAdvanced", advancedInitialState, { addUser, removeUser, setAge, setFirstName, setLastName });
 
 // reducer exported for combining elsewhere
 export const userAdvancedReducer = reducer;
 
+export const userAdvancedActionTypes = actionTypes
+
 // actions created and exported for use elsewhere
 export const actions = {
-  onAddUser: wrap(addUser),
-  onRemoveUser: wrap(removeUser),
-  onSetAge: wrap(setAge),
-  onSetFirstName: wrap(setFirstName),
-  onSetLastName: wrap(setLastName)
+  onAddUser: wrap(addUser, 'addUser'),
+  onRemoveUser: wrap(removeUser, 'removeUser'),
+  onSetAge: wrap(setAge, 'setAge'),
+  onSetFirstName: wrap(setFirstName, 'setFirstName'),
+  onSetLastName: wrap(setLastName, 'setLastName')
 };
