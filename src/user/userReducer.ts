@@ -66,12 +66,7 @@ const clearForm = (state: IUserState): IUserState => ({
 // - the initial state
 // - an array of reducer action functions (from above)
 
-const { reducer, wrap } = createAtomic("User", initialState, [
-  addUser,
-  removeUser,
-  setFirstName,
-  setLastName
-]);
+const { actionTypes, reducer, wrap } = createAtomic<IUserState, IUserState>("User", initialState, { addUser, removeUser, setFirstName, setLastName });
 
 // it returns two things:
 // - the reducer for exporting and combining etc
@@ -79,10 +74,12 @@ const { reducer, wrap } = createAtomic("User", initialState, [
 
 export const userReducer = reducer;
 
+export const userActionTypes = actionTypes
+
 // these actions can now be dispatched as normal
 export const actions = {
-  onAddUser: wrap(addUser),
-  onRemoveUser: wrap(removeUser),
-  onSetFirstName: wrap(setFirstName),
-  onSetLastName: wrap(setLastName)
+  onAddUser: wrap(addUser, 'addUser'),
+  onRemoveUser: wrap(removeUser, 'removeUser'),
+  onSetFirstName: wrap(setFirstName, 'setFirstName'),
+  onSetLastName: wrap(setLastName, 'setLastName')
 };

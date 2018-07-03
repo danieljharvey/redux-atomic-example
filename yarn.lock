@@ -4777,6 +4777,10 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
+object-entries@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/object-entries/-/object-entries-1.0.0.tgz#a560e3287f7044cb9d294b9d0ca250c122547e5c"
+
 object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
@@ -5774,9 +5778,9 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-atomic@0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.1.8.tgz#b88b1b93aba095c3bc622418761e142f83e64cd6"
+redux-atomic@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.2.1.tgz#c24af34dd2e0a829fa6db76df99423a52d9489fa"
 
 redux-devtools-extension@^2.13.5:
   version "2.13.5"
