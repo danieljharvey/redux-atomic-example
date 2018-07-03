@@ -12,16 +12,21 @@ import { IUserState } from "./user/userTypes";
 import { validatedReducer } from "./validated/validatedReducer";
 import { PersonState } from "./validated/validatedTypes";
 
+import { lensReducer } from './lenses/lensReducer'
+import { LensState } from "./lenses/lensTypes"
+
 export interface IStoreState {
   user: IUserState;
   advancedUser: UserState;
   validated: PersonState;
+  lens: LensState;
 }
 
 const rootReducer: any = combineReducers({
   user: userReducer,
   advancedUser: userAdvancedReducer,
-  validated: validatedReducer
+  validated: validatedReducer,
+  lens: lensReducer
 });
 
 export const store: any = createStore(rootReducer, composeWithDevTools(install()));

@@ -12,6 +12,9 @@ import { UserAdvancedListContainer } from "./user-advanced/userAdvancedList";
 import { ValidatedFormContainer } from "./validated/validatedForm";
 import { ValidatedListContainer } from "./validated/validatedList";
 
+import { LensFormContainer } from './lenses/lensForm'
+import { LensListContainer } from './lenses/lensList'
+
 class App extends React.Component {
   public render() {
     return (
@@ -37,6 +40,14 @@ class App extends React.Component {
           <div style={{ padding: "20px" }}>
             <ValidatedFormContainer />
             <ValidatedListContainer />
+          </div>
+
+          <header className="App-header green">
+            <h1 className="App-title">Welcome to the lens-based ridiculous Redux Atomic Example</h1>
+          </header>
+          <div style={{ padding: "20px" }}>
+            <LensFormContainer />
+            <LensListContainer />
           </div>
         </div>
       </Provider>
