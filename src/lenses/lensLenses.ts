@@ -47,10 +47,13 @@ export const selectors = {
     firstUserCount: lensStateL.compose(firstUserCountL).get
 }
 
-/*
-// PersonState -> PersonState
-const reducers = {
-    incrementFirstUserCount: firstUserCount.modify(x => x + 1),
-    setFirstUserCount: firstUserCount.set
+
+// LensState -> LensState
+export const reducers = {
+    setFirstName: editPersonL.compose(firstNameL).set,
+    setLastName: editPersonL.compose(lastNameL).set
 }
-*/
+
+export const lenses = {
+    people: peopleL
+}
