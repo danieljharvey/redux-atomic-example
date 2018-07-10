@@ -22,7 +22,8 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "tsc:watch": "tsc --noEmit --w --pretty"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",

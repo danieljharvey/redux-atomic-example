@@ -14,7 +14,8 @@ interface IUserListDispatchProps {
 
 type IUserListProps = IUserListStateProps & IUserListDispatchProps;
 
-const removePerson = (props: IUserListProps, personID: number) => () => props.onRemovePerson(personID);
+const removePerson = (props: IUserListProps, id: number) => () =>
+  props.onRemovePerson(id);
 
 const LensList = (props: IUserListProps) => {
   return (
@@ -22,10 +23,9 @@ const LensList = (props: IUserListProps) => {
       {props.people.map((person: LensPerson, index: number) => (
         <div key={index}>
           <h3>{person.firstName + " " + person.lastName}</h3>
-          <button onClick={removePerson(props, person.personID)}>delete</button>
+          <button onClick={removePerson(props, index)}>delete</button>
         </div>
-      ))
-      }
+      ))}
     </div>
   );
 };
@@ -40,7 +40,10 @@ const mapStateToProps = (state: IStoreState): IUserListStateProps => {
   };
 };
 
-export const LensListContainer = connect<IUserListStateProps, IUserListDispatchProps>(
+export const LensListContainer = connect<
+  IUserListStateProps,
+  IUserListDispatchProps
+>(
   mapStateToProps,
   mapDispatchToProps
 )(LensList);

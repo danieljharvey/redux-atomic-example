@@ -4,17 +4,14 @@ import * as t from "io-ts";
 export const LensPersonValidaror = t.type({
   age: t.number,
   firstName: t.string,
-  lastName: t.string,
-  personID: t.number
+  lastName: t.string
 });
 
 // validator for whole reducer
 export const LensStateValidator = t.type({
   editPerson: LensPersonValidaror,
-  nextPersonID: t.number,
   people: t.array(LensPersonValidaror),
-  warning: t.string,
-  firstUserCount: t.number
+  warning: t.string
 });
 
 // types generated from validators

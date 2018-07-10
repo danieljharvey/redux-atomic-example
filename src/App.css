@@ -23,7 +23,7 @@
 }
 
 .green {
-  background-color: green
+  background-color: green;
 }
 
 .App-title {
@@ -41,4 +41,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.warningBox {
+  border: red 1px solid;
+  background-color: darkred;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
