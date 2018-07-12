@@ -1,7 +1,7 @@
 import * as t from "io-ts";
 
 // validator for user
-export const LensPersonValidaror = t.type({
+export const LensPersonValidator = t.type({
   age: t.number,
   firstName: t.string,
   lastName: t.string
@@ -9,11 +9,10 @@ export const LensPersonValidaror = t.type({
 
 // validator for whole reducer
 export const LensStateValidator = t.type({
-  editPerson: LensPersonValidaror,
-  people: t.array(LensPersonValidaror),
-  warning: t.string
+  editPerson: LensPersonValidator,
+  people: t.array(LensPersonValidator)
 });
 
 // types generated from validators
-export type LensPerson = t.TypeOf<typeof LensPersonValidaror>;
+export type LensPerson = t.TypeOf<typeof LensPersonValidator>;
 export type LensState = t.TypeOf<typeof LensStateValidator>;

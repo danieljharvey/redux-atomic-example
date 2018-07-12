@@ -12,8 +12,7 @@ const defaultUser: LensPerson = {
 
 export const initialState: LensState = {
   editPerson: defaultUser,
-  people: [],
-  warning: "Fucking hell lads"
+  people: []
 };
 
 const addUser = () => (state: LensState): LensState =>

@@ -1,19 +1,30 @@
-import { lenses } from "./lensLenses";
-
 import { LensState, LensStateValidator } from "./lensTypes";
 import { ValidationError } from "io-ts";
+import { Either, right, left } from "fp-ts/lib/Either";
+import { lenses } from "./lensLenses";
 
-export const validateOrWarning = (oldState: LensState) => (
+const isLongEnough = (str: string): boolean => str.length > 0;
+
+const firstNameLongEnough = (state: LensState): Either<string, LensState> =>
+  isLongEnough(lenses.editPersonFirstName.get(state))
+    ? right(state)
+    : left("First name is too short");
+
+const lastNameLongEnough = (state: LensState): Either<string, LensState> =>
+  isLongEnough(lenses.editPersonLastName.get(state))
+    ? right(state)
+    : left("Last name is too short");
+
+export const validateOrWarning = (
   state: LensState
-): LensState =>
+): Either<string, LensState> =>
   LensStateValidator.decode(state)
-    .map(lenses.warning.set(""))
-    .getOrElseL(errorsToWarning(oldState));
+    .mapLeft(errorsToWarning)
+    .chain(firstNameLongEnough)
+    .chain(lastNameLongEnough);
 
-const errorsToWarning = (oldState: LensState) => (
-  errors: ValidationError[]
-): LensState =>
-  lenses.warning.set(errors.map(showValidationError).join("\n"))(oldState);
+const errorsToWarning = (errors: ValidationError[]): string =>
+  errors.map(showValidationError).join("\n");
 
 const type: any = { name: "unknown" };
 const mempty: ValidationError["context"] = [

@@ -9,9 +9,6 @@ const lensStateL = Lens.fromProp<IStoreState, "lens">("lens");
 // LensState -> LensState['people']
 const peopleL = Lens.fromProp<LensState, "people">("people");
 
-// LensState -> LensState['warning']
-const warningL = Lens.fromProp<LensState, "warning">("warning");
-
 // LensState -> LensState['editPerson']
 const editPersonL = Lens.fromProp<LensState, "editPerson">("editPerson");
 
@@ -31,6 +28,5 @@ export const lenses = {
   editPersonAge: editPersonL.compose(ageL),
   editPersonFirstName: editPersonL.compose(firstNameL),
   editPersonLastName: editPersonL.compose(lastNameL),
-  people: peopleL,
-  warning: warningL
+  people: peopleL
 };

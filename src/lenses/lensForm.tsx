@@ -9,6 +9,7 @@ interface IUserFormStateProps {
   firstName: string;
   lastName: string;
   warning: string;
+  valid: boolean;
 }
 
 interface IUserFormDispatchProps {
@@ -50,7 +51,9 @@ const LensForm = (props: IUserFormProps) => {
         value={props.lastName}
         onChange={setLastName(props)}
       />
-      <button onClick={props.onAddUser}>Save</button>
+      <button disabled={!props.valid} onClick={props.onAddUser}>
+        Save
+      </button>
       <button onClick={() => props.onSetFirstName(emptyArray)}>
         Set first name to []
       </button>
@@ -68,7 +71,8 @@ const mapStateToProps = (state: IStoreState): IUserFormStateProps => ({
   age: selectors.editPersonAge(state),
   firstName: selectors.editPersonFirstName(state),
   lastName: selectors.editPersonLastName(state),
-  warning: selectors.warning(state)
+  warning: selectors.warning(state),
+  valid: selectors.valid(state)
 });
 
 export const LensFormContainer = connect<
