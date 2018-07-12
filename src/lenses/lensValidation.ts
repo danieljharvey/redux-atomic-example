@@ -1,4 +1,4 @@
-import { reducers } from "./lensLenses";
+import { lenses } from "./lensLenses";
 
 import { LensState, LensStateValidator } from "./lensTypes";
 import { ValidationError } from "io-ts";
@@ -7,13 +7,13 @@ export const validateOrWarning = (oldState: LensState) => (
   state: LensState
 ): LensState =>
   LensStateValidator.decode(state)
-    .map(reducers.setWarning(""))
+    .map(lenses.warning.set(""))
     .getOrElseL(errorsToWarning(oldState));
 
 const errorsToWarning = (oldState: LensState) => (
   errors: ValidationError[]
 ): LensState =>
-  reducers.setWarning(errors.map(showValidationError).join("\n"))(oldState);
+  lenses.warning.set(errors.map(showValidationError).join("\n"))(oldState);
 
 const type: any = { name: "unknown" };
 const mempty: ValidationError["context"] = [

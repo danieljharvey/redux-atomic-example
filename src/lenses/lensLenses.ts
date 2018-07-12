@@ -25,24 +25,12 @@ const firstNameL = Lens.fromProp<LensPerson, "firstName">("firstName");
 const lastNameL = Lens.fromProp<LensPerson, "lastName">("lastName");
 
 // state -> state
-export const selectors = {
-  editPerson: {
-    age: lensStateL.compose(editPersonL).compose(ageL).get,
-    firstName: lensStateL.compose(editPersonL).compose(firstNameL).get,
-    lastName: lensStateL.compose(editPersonL).compose(lastNameL).get
-  },
-  people: lensStateL.compose(peopleL).get,
-  warning: lensStateL.compose(warningL).get
-};
-
-// LensState -> LensState
-export const reducers = {
-  setFirstName: editPersonL.compose(firstNameL).set,
-  setLastName: editPersonL.compose(lastNameL).set,
-  setEditPerson: editPersonL.set,
-  setWarning: warningL.set
-};
-
 export const lenses = {
-  people: peopleL
+  lensState: lensStateL,
+  editPerson: editPersonL,
+  editPersonAge: editPersonL.compose(ageL),
+  editPersonFirstName: editPersonL.compose(firstNameL),
+  editPersonLastName: editPersonL.compose(lastNameL),
+  people: peopleL,
+  warning: warningL
 };

@@ -16,21 +16,6 @@ describe("Lens reducer", () => {
     expect(newState.people[0].firstName).toEqual("Horse");
   });
 
-  it("Fails to add a broken user to the list", () => {
-    const state: any = {
-      ...initialState,
-      editPerson: {
-        ...initialState.editPerson,
-        firstName: 0,
-        lastName: "Time"
-      }
-    };
-    const newState = lensReducer(state, actions.addUser());
-    expect(newState.people).toHaveLength(0);
-    expect(newState.editPerson.lastName).toEqual("Time");
-    expect(newState.warning).toContain("firstName");
-  });
-
   it("Changes the firstName of the edited person", () => {
     const state = {
       ...initialState,
@@ -42,21 +27,6 @@ describe("Lens reducer", () => {
     };
     const newState = lensReducer(state, actions.setFirstName("Dog"));
     expect(newState.editPerson.firstName).toEqual("Dog");
-  });
-
-  it("Cannot change the first name to a number", () => {
-    const state = {
-      ...initialState,
-      editPerson: {
-        ...initialState.editPerson,
-        firstName: "John",
-        lastName: "Time"
-      }
-    };
-    const newValue: any = 100;
-
-    const newState = lensReducer(state, actions.setFirstName(newValue));
-    expect(newState.editPerson.firstName).toEqual("John"); // unchanged
   });
 
   it("Changes the lastName of the edited person", () => {
@@ -100,19 +70,5 @@ describe("Lens reducer", () => {
       "huey",
       "louie"
     ]);
-  });
-
-  it("Wipes the warning after a successful change", () => {
-    const state = {
-      ...initialState,
-      editPerson: {
-        ...initialState.editPerson,
-        firstName: "Dog",
-        lastName: "Time"
-      },
-      warning: "blah blah blah"
-    };
-    const newState = lensReducer(state, actions.addUser());
-    expect(newState.warning).toHaveLength(0);
   });
 });

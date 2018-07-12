@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { actions } from "./lensReducer";
 import { IStoreState } from "../Store";
-import { selectors } from "./lensLenses";
+import { selectors } from "./LensSelectors";
 
 interface IUserFormStateProps {
   age: number;
@@ -65,9 +65,9 @@ const mapDispatchToProps: IUserFormDispatchProps = {
 };
 
 const mapStateToProps = (state: IStoreState): IUserFormStateProps => ({
-  age: selectors.editPerson.age(state),
-  firstName: selectors.editPerson.firstName(state),
-  lastName: selectors.editPerson.lastName(state),
+  age: selectors.editPersonAge(state),
+  firstName: selectors.editPersonFirstName(state),
+  lastName: selectors.editPersonLastName(state),
   warning: selectors.warning(state)
 });
 

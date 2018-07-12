@@ -1,9 +1,7 @@
 import { createAtomic } from "redux-atomic";
 import { LensPerson, LensState } from "./lensTypes";
-import { reducers, lenses } from "./lensLenses";
+import { lenses } from "./lensLenses";
 import { compose } from "ramda";
-
-import { validateOrWarning } from "./lensValidation";
 
 // setting initialState
 const defaultUser: LensPerson = {
@@ -20,29 +18,13 @@ export const initialState: LensState = {
 
 const addUser = () => (state: LensState): LensState =>
   compose(
-    validateOrWarning(state),
-    reducers.setEditPerson(defaultUser),
+    lenses.editPerson.set(defaultUser),
     lenses.people.modify(people => people.concat(state.editPerson))
   )(state);
 
 const removePerson = (id: number) => (state: LensState): LensState =>
-  compose(
-    validateOrWarning(state),
-    lenses.people.modify(people =>
-      people.filter((_, index: number) => id !== index)
-    )
-  )(state);
-
-const setFirstName = (firstName: string) => (state: LensState): LensState =>
-  compose(
-    validateOrWarning(state),
-    reducers.setFirstName(firstName)
-  )(state);
-
-const setLastName = (lastName: string) => (state: LensState): LensState =>
-  compose(
-    validateOrWarning(state),
-    reducers.setLastName(lastName)
+  lenses.people.modify(people =>
+    people.filter((_, index: number) => id !== index)
   )(state);
 
 const { actionTypes, reducer, wrap } = createAtomic<LensState, LensState>(
@@ -50,8 +32,8 @@ const { actionTypes, reducer, wrap } = createAtomic<LensState, LensState>(
   initialState,
   {
     addUser,
-    setFirstName,
-    setLastName,
+    setFirstName: lenses.editPersonFirstName.set,
+    setLastName: lenses.editPersonLastName.set,
     removePerson
   }
 );
@@ -62,7 +44,7 @@ export const lensActionTypes = actionTypes;
 
 export const actions = {
   addUser: wrap(addUser, "addUser"),
-  setFirstName: wrap(reducers.setFirstName, "setFirstName"),
-  setLastName: wrap(reducers.setLastName, "setLastName"),
+  setFirstName: wrap(lenses.editPersonFirstName.set, "setFirstName"),
+  setLastName: wrap(lenses.editPersonLastName.set, "setLastName"),
   removePerson: wrap(removePerson, "removePerson")
 };
