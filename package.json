@@ -15,7 +15,7 @@
     "react-redux": "^5.0.7",
     "react-scripts-ts": "2.16.0",
     "redux": "^4.0.0",
-    "redux-atomic": "0.2.1",
+    "redux-atomic": "0.2.2",
     "redux-devtools-extension": "^2.13.5",
     "redux-loop": "^4.3.3"
   },
