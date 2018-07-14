@@ -3,4 +3,6 @@ import * as ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 
+require('es6-symbol/implement');
+
 ReactDOM.render(<App />, document.getElementById("root") as HTMLElement);
