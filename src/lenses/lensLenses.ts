@@ -24,6 +24,9 @@ const firstNameL = Lens.fromProp<LensPerson, "firstName">("firstName");
 // LensPerson -> LensPerson['lastName']
 const lastNameL = Lens.fromProp<LensPerson, "lastName">("lastName");
 
+// LensState -> LensState['data']
+export const dataL = Lens.fromProp<LensState, "data">("data");
+
 // state -> state
 export const selectors = {
   editPerson: {
@@ -32,7 +35,8 @@ export const selectors = {
     lastName: lensStateL.compose(editPersonL).compose(lastNameL).get
   },
   people: lensStateL.compose(peopleL).get,
-  warning: lensStateL.compose(warningL).get
+  warning: lensStateL.compose(warningL).get,
+  data: lensStateL.compose(dataL).get
 };
 
 // LensState -> LensState

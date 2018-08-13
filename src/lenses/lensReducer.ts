@@ -1,7 +1,9 @@
-import { createAtomic } from "redux-atomic";
-import { LensPerson, LensState } from "./lensTypes";
-import { reducers, lenses } from "./lensLenses";
+import { createAtomic, AtomicAction } from "redux-atomic";
+import { LensPerson, LensState, fetchData, FetchData } from "./lensTypes";
+import { reducers, lenses, dataL } from "./lensLenses";
 import { compose } from "ramda";
+import { Lens } from "monocle-ts";
+import { Loop, loop, Cmd } from "redux-loop";
 
 import { validateOrWarning } from "./lensValidation";
 
@@ -15,7 +17,8 @@ const defaultUser: LensPerson = {
 export const initialState: LensState = {
   editPerson: defaultUser,
   people: [],
-  warning: "Fucking hell lads"
+  warning: "Fucking hell lads",
+  data: fetchData.empty()
 };
 
 const addUser = () => (state: LensState): LensState =>
@@ -45,7 +48,34 @@ const setLastName = (lastName: string) => (state: LensState): LensState =>
     reducers.setLastName(lastName)
   )(state);
 
-const { actionTypes, reducer, wrap } = createAtomic<LensState, LensState>(
+const { wrap } = createAtomic("LensPerson", initialState, {});
+
+const fetchSuccess = <A, S>(lens: Lens<S, FetchData<A>>) => (data: A) => (
+  state: S
+): S => lens.set(fetchData.ready(data))(state);
+
+const fetchFailed = <A, S>(lens: Lens<S, FetchData<A>>) => () => (
+  state: S
+): S => lens.set(fetchData.failed())(state);
+
+const startFetch = <A, S>(
+  lens: Lens<S, FetchData<A>>,
+  success: (a: A) => AtomicAction<S, S>,
+  fail: () => AtomicAction<S, S>
+) => () => (state: S): Loop<S, AtomicAction<S, S>> =>
+  loop<S, AtomicAction<S, S>>(
+    lens.set(fetchData.loading())(state),
+    Cmd.run(func, {
+      successActionCreator: success,
+      failActionCreator: fail
+    })
+  );
+
+const dataLad = () => {
+  return Promise.resolve("horses");
+};
+
+const { actionTypes, reducer } = createAtomic<LensState, LensState>(
   "LensPerson",
   initialState,
   {

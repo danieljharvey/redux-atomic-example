@@ -5784,9 +5784,9 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-atomic@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.2.1.tgz#c24af34dd2e0a829fa6db76df99423a52d9489fa"
+redux-atomic@0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/redux-atomic/-/redux-atomic-0.2.2.tgz#4f4904882d9ddf6f3a4ad510233f57764c95514b"
 
 redux-devtools-extension@^2.13.5:
   version "2.13.5"
@@ -6862,9 +6862,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.8.3:
-  version "2.8.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.3.tgz#5d817f9b6f31bb871835f4edf0089f21abe6c170"
+typescript@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.0.1.tgz#43738f29585d3a87575520a4b93ab6026ef11fdb"
 
 ua-parser-js@^0.7.9:
   version "0.7.18"
